@@ -1,0 +1,24 @@
+@use '../../../../styles/palette';
+
+.mys-image {
+
+    width: 7rem;
+  
+}
+
+.mys-sidenav-container {
+  height: 100%;
+}
+
+.mys-sidenav-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.mys-sidenav-container .mat-drawer {
+  background-color: map-get(palette.$primary-palette, 500);
+}
+
+.mat-list-item {
+  color: palette.$light-primary-text;
+}

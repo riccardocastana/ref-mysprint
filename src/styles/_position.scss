@@ -1,0 +1,23 @@
+$positions: (fixed, absolute, relative, static, sticky);
+
+@each $position in $positions {
+  .mys-position-#{$position} {
+    position: $position;
+  }
+}
+
+.mys-top-0 {
+  top: 0;
+}
+
+.mys-bottom-0 {
+  bottom: 0;
+}
+
+.mys-right-0 {
+  right: 0;
+}
+
+.mys-left-0 {
+  left: 0;
+}

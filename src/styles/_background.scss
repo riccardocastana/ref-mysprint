@@ -1,0 +1,7 @@
+@use 'palette';
+
+@each $color, $value in palette.$colors {
+  .mys-bg-color-#{$color} {
+    background-color: $value;
+  }
+}

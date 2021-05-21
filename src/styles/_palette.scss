@@ -1,0 +1,124 @@
+
+@use '~@angular/material' as mat;
+@import "~@angular/material/theming";
+
+$dark-primary-text: rgba(#000, 0.87);
+$dark-secondary-text: rgba(#000, 0.54);
+$dark-disabled-text: rgba(#000, 0.38);
+$dark-dividers: rgba(#000, 0.12);
+$dark-focused: rgba(#000, 0.12);
+$light-primary-text: #fff;
+$light-secondary-text: rgba(#fff, 0.7);
+$light-disabled-text: rgba(#fff, 0.5);
+$light-dividers: rgba(#fff, 0.12);
+$light-focused: rgba(#fff, 0.12);
+
+$warn-palette: (
+  50: #fae1e6,
+  100: #f3b3c0,
+  200: #eb8097,
+  300: #e24d6d,
+  400: #dc274d,
+  500: #d6012e,
+  600: #d10129,
+  700: #cc0123,
+  800: #c6011d,
+  900: #bc0012,
+  A100: #ffe5e6,
+  A200: #ffb2b5,
+  A400: #ff7f84,
+  A700: #ff656c,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+$primary-palette: (
+    50 : #e1f1f1,
+    100 : #b5dbdd,
+    200 : #84c4c6,
+    300 : #53acaf,
+    400 : #2e9a9e,
+    500 : #09888d,
+    600 : #088085,
+    700 : #06757a,
+    800 : #056b70,
+    900 : #02585d,
+    A100 : #8ef8ff,
+    A200 : #5bf4ff,
+    A400 : #28f1ff,
+    A700 : #0eefff,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  ),
+);
+
+
+$accent-palette: (
+  50: #ffebec,
+  100: #ffcecf,
+  200: #ffadaf,
+  300: #ff8c8f,
+  400: #ff7377,
+  500: #ff5a5f,
+  600: #ff5257,
+  700: #ff484d,
+  800: #ff3f43,
+  900: #ff2e32,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffdada,
+  A700: #ffc0c1,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  ),
+);
+
+$colors: (
+  "transparent": transparent,
+  "white": #fff,
+  "primary": mat.get-color-from-palette($primary-palette, 500),
+  "accent": mat.get-color-from-palette($accent-palette, 500),
+  "warn": mat.get-color-from-palette($warn-palette, 500),
+  "dark": #555,
+  "light-dark": #6c757d,
+);

@@ -1,0 +1,31 @@
+@use 'palette';
+
+@each $color, $value in palette.$colors {
+  .mys-text-color-#{$color} {
+    color: $value;
+  }
+}
+
+$alignments: (
+  center : center
+);
+@each $key , $value in $alignments {
+  .mys-text-#{$key} {
+    text-align: $value;
+  }
+}
+
+$transformations: (
+  capitalize : capitalize
+);
+
+@each $key, $value in $transformations {
+
+  .mys-text-transform-#{$key} {
+    text-transform: $value;
+  }
+}
+
+.mys-text-color-inherit {
+  color: inherit;
+}

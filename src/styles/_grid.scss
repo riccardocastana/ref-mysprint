@@ -1,0 +1,204 @@
+@use './breakpoints';
+
+$col-min-size: 1;
+$col-max-size: 12;
+
+$col-sizes: ();
+
+// Generates col sizes.
+@for $i from $col-min-size through $col-max-size {
+  $col-sizes: append($col-sizes, $i);
+}
+
+$gutters: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 1rem,
+  4: 1.5rem,
+  5: 3rem,
+);
+
+@function make-col-percentage($target-col-size) {
+  @return percentage($target-col-size / $col-max-size);
+}
+
+@mixin make-col($target-col-size) {
+  $percentage-size: make-col-percentage($target-col-size);
+
+  flex: 0 0 auto;
+  width: $percentage-size;
+}
+
+@mixin make-offset($target-col-size) {
+  $percentage-size: make-col-percentage($target-col-size);
+
+  width: $percentage-size;
+}
+
+@mixin make-grid-columns($target-breakpoint) {
+  .mys-col-#{$target-breakpoint} {
+    flex: 1 0 0%;
+  }
+
+  .mys-col-#{$target-breakpoint}-auto {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  @each $col-size in $col-sizes {
+    .mys-col-#{$target-breakpoint}-#{$col-size} {
+      @include make-col($col-size);
+    }
+
+    .mys-offset-#{$target-breakpoint}-#{$col-size} {
+      @include make-offset($col-size);
+    }
+  }
+}
+
+@mixin make-gutter-var($direction, $value) {
+  --bs-gutter-#{$direction}: $value;
+}
+
+@mixin make-grid-gutters($target-breakpoint) {
+  @each $gutter-key, $gutter-value in $gutters {
+    .mys-g-#{$target-breakpoint}-#{$gutter-key},
+    .mys-gx-#{$target-breakpoint}-#{$gutter-key} {
+      @include make-gutter-var(x, $gutter-value);
+    }
+
+    .mys-g-#{$target-breakpoint}-#{$gutter-key},
+    .mys-gy-#{$target-breakpoint}-#{$gutter-key} {
+      @include make-gutter-var(y, $gutter-value);
+    }
+  }
+}
+
+$sm-breakpoint: map-get(breakpoints.$grid-breakpoints, 'sm');
+$md-breakpoint: map-get(breakpoints.$grid-breakpoints, 'md');
+$lg-breakpoint: map-get(breakpoints.$grid-breakpoints, 'lg');
+$xl-breakpoint: map-get(breakpoints.$grid-breakpoints, 'xl');
+$xxl-breakpoint: map-get(breakpoints.$grid-breakpoints, 'xxl');
+
+.mys-container,
+.mys-container-fluid,
+.mys-container-xxl,
+.mys-container-xl,
+.mys-container-lg,
+.mys-container-md,
+.mys-container-sm {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  width: 100%;
+}
+
+@media (min-width: $sm-breakpoint) {
+  .mys-container-sm,
+  .mys-container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: $md-breakpoint) {
+  .mys-container-md,
+  .mys-container-sm,
+  .mys-container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: $lg-breakpoint) {
+  .mys-container-lg,
+  .mys-container-md,
+  .mys-container-sm,
+  .mys-container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: $xl-breakpoint) {
+  .mys-container-xl,
+  .mys-container-lg,
+  .mys-container-md,
+  .mys-container-sm,
+  .mys-container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: $xxl-breakpoint) {
+  .mys-container-xxl,
+  .mys-container-xl,
+  .mys-container-lg,
+  .mys-container-md,
+  .mys-container-sm,
+  .mys-container {
+    max-width: 1320px;
+  }
+}
+
+.mys-row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--bs-gutter-x) / -2);
+  margin-right: calc(var(--bs-gutter-x) / -2);
+  margin-top: calc(var(--bs-gutter-y) * -1);
+}
+
+.mys-row > * {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  margin-top: var(--bs-gutter-y);
+  max-width: 100%;
+  padding-left: calc(var(--bs-gutter-x) / 2);
+  padding-right: calc(var(--bs-gutter-x) / 2);
+  width: 100%;
+}
+
+// Base cols.
+.mys-col {
+  flex: 1 0 0%;
+}
+
+.mys-col-auto {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+@each $col-size in $col-sizes {
+  $percentage-size: make-col-percentage($col-size);
+
+  .mys-col-#{$col-size} {
+    @include make-col($col-size);
+  }
+
+  .mys-offset-#{$col-size} {
+    @include make-offset($col-size);
+  }
+}
+
+// Base gutters.
+@each $gutter-key, $gutter-value in $gutters {
+  .mys-g-#{$gutter-key},
+  .mys-gx-#{$gutter-key} {
+    @include make-gutter-var(x, $gutter-value);
+  }
+
+  .mys-g-#{$gutter-key},
+  .mys-gy-#{$gutter-key} {
+    @include make-gutter-var(y, $gutter-value);
+  }
+}
+
+// Responsive cols and gutters.
+@each $target-breakpoint in map-keys(map_remove(breakpoints.$grid-breakpoints)) {
+  @include breakpoints.media-breakpoint-up($target-breakpoint) {
+    @include make-grid-columns($target-breakpoint);
+    @include make-grid-gutters($target-breakpoint);
+  }
+}

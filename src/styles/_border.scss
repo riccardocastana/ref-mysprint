@@ -1,0 +1,44 @@
+@use 'palette';
+
+$border-widths: (0, 1, 2, 3);
+
+@each $border-width in $border-widths {
+  .mys-border-width-#{$border-width} {
+    border-style: solid;
+    border-width: $border-width + unquote('px');
+  }
+
+  .mys-border-left-width-#{$border-width} {
+    border-left-style: solid;
+    border-left-width: $border-width + unquote('px');
+  }
+
+  .mys-border-right-width-#{$border-width} {
+    border-right-style: solid;
+    border-right-width: $border-width + unquote('px');
+  }
+
+  .mys-border-top-width-#{$border-width} {
+    border-top-style: solid;
+    border-top-width: $border-width + unquote('px');
+  }
+
+  .mys-border-bottom-width-#{$border-width} {
+    border-bottom-style: solid;
+    border-bottom-width: $border-width + unquote('px');
+  }
+}
+
+@each $color, $value in palette.$colors {
+  .mys-border-color-#{$color} {
+    border-color: $value;
+  }
+}
+
+$border-radius: (20, 10, 9, 8, 5);
+
+@each $radius in $border-radius {
+  .mys-border-radius-#{$radius} {
+    border-radius: $radius + unquote('px');
+  }
+}

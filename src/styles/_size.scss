@@ -1,0 +1,30 @@
+@use './breakpoints';
+
+// $sizes: (25, 50, 85, 75, 100);
+
+$sizes: (100, 95, 50, 20);
+
+.mys-w-auto {
+  width: auto;
+}
+
+@each $size in $sizes {
+  .mys-w-#{$size} {
+    width: $size + unquote('%');
+  }
+
+  .mys-h-#{$size} {
+    height: $size + unquote('%');
+  }
+  
+  @each $breakpoint in map-keys(map_remove(breakpoints.$grid-breakpoints, xs)) {
+    @include breakpoints.media-breakpoint-up($breakpoint) {
+      .mys-w-#{$breakpoint}-#{$size} {
+        width: $size + unquote('%');
+      }
+      .mys-h-#{$breakpoint}-#{$size} {
+        height: $size + unquote('%');
+      }
+    }
+  }
+}

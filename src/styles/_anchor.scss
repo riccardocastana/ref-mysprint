@@ -1,0 +1,14 @@
+@use 'palette';
+
+@each $color, $value in palette.$colors {
+  .cpm-anchor-#{$color} {
+    cursor: pointer;
+    text-decoration: none;
+    color: darken($value,2%);
+
+    &:hover,
+    &:focus {
+      color: darken($value, 10%)
+    }
+  }
+}

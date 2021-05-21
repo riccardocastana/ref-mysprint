@@ -1,0 +1,43 @@
+@use './background';
+@use './cursor';
+@use './flex';
+@use './grid';
+@use './outline';
+@use './overflow';
+@use './palette';
+@use './position';
+@use './spacing';
+@use './text';
+@use './border';
+@use './size';
+@use './font';
+@use './display';
+@use './anchor';
+@use './material/main.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: inherit;
+}
+
+mat-tooltip-component {
+  .mat-tooltip {
+    background-color: #607d8b;
+    color: #fafafa;
+  }
+}
+
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,159 @@
+@use './breakpoints';
+
+.mys-m-auto {
+  margin: auto;
+}
+
+.mys-mx-auto {
+  margin: 0 auto;
+}
+
+.mys-my-auto {
+  margin: auto 0;
+}
+
+@each $breakpoint in map-keys(map_remove(breakpoints.$grid-breakpoints, xs)) {
+  @include breakpoints.media-breakpoint-up($breakpoint) {
+    .mys-m-#{$breakpoint}-auto {
+      margin: auto;
+    }
+
+    .mys-mx-#{$breakpoint}-auto {
+      margin: 0 auto;
+    }
+
+    .mys-my-#{$breakpoint}-auto {
+      margin: auto 0;
+    }
+  }
+}
+
+$spacer: 1rem !default;
+$spacers: (
+  0: 0,
+  1: $spacer / 4,
+  2: $spacer / 2,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+) !default;
+
+@each $key, $value in $spacers {
+  .mys-m-#{$key} {
+    margin: $value;
+  }
+
+  .mys-mx-#{$key} {
+    margin: 0 $value;
+  }
+
+  .mys-my-#{$key} {
+    margin: $value 0;
+  }
+
+  .mys-mt-#{$key} {
+    margin-top: $value;
+  }
+
+  .mys-mb-#{$key} {
+    margin-bottom: $value;
+  }
+
+  .mys-mr-#{$key} {
+    margin-right: $value;
+  }
+
+  .mys-ml-#{$key} {
+    margin-left: $value;
+  }
+
+  .mys-p-#{$key} {
+    padding: $value;
+  }
+
+  .mys-px-#{$key} {
+    padding: 0 $value;
+  }
+
+  .mys-py-#{$key} {
+    padding: $value 0;
+  }
+
+  .mys-pt-#{$key} {
+    padding-top: $value;
+  }
+
+  .mys-pb-#{$key} {
+    padding-bottom: $value;
+  }
+
+  .mys-pr-#{$key} {
+    padding-right: $value;
+  }
+
+  .mys-pl-#{$key} {
+    padding-left: $value;
+  }
+}
+
+@each $breakpoint in map-keys(map_remove(breakpoints.$grid-breakpoints, xs)) {
+  @include breakpoints.media-breakpoint-up($breakpoint) {
+    @each $key, $value in $spacers {
+      .mys-m-#{$breakpoint}-#{$key} {
+        margin: $value;
+      }
+
+      .mys-mx-#{$breakpoint}-#{$key} {
+        margin: 0 $value;
+      }
+
+      .mys-my-#{$breakpoint}-#{$key} {
+        margin: $value 0;
+      }
+
+      .mys-mt-#{$breakpoint}-#{$key} {
+        margin-top: $value;
+      }
+
+      .mys-mb-#{$breakpoint}-#{$key} {
+        margin-bottom: $value;
+      }
+
+      .mys-mr-#{$breakpoint}-#{$key} {
+        margin-right: $value;
+      }
+
+      .mys-ml-#{$breakpoint}-#{$key} {
+        margin-left: $value;
+      }
+
+      .mys-p-#{$breakpoint}-#{$key} {
+        padding: $value;
+      }
+
+      .mys-px-#{$breakpoint}-#{$key} {
+        padding: 0 $value;
+      }
+
+      .mys-py-#{$breakpoint}-#{$key} {
+        padding: $value 0;
+      }
+
+      .mys-pt-#{$breakpoint}-#{$key} {
+        padding-top: $value;
+      }
+
+      .mys-pb-#{$breakpoint}-#{$key} {
+        padding-bottom: $value;
+      }
+
+      .mys-pr-#{$breakpoint}-#{$key} {
+        padding-right: $value;
+      }
+
+      .mys-pl-#{$breakpoint}-#{$key} {
+        padding-left: $value;
+      }
+    }
+  }
+}

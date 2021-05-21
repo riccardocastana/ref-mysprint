@@ -1,0 +1,39 @@
+<mat-sidenav-container class="mys-sidenav-container">
+  <mat-sidenav #drawer fixedInViewport="true" [opened]="sideNavOpened" mode="side">
+    <mat-nav-list dense class="mys-mt-5">
+      <mat-list-item routerLink="/my-sprint/homepage">
+        <mat-icon>home</mat-icon>
+        <span class="mys-ml-2"> Homepage </span>
+      </mat-list-item>
+      <mat-list-item routerLink="/my-sprint/individuale">
+        <mat-icon>person</mat-icon>
+        <span class="mys-ml-2"> Individuale </span>
+      </mat-list-item>
+      <mat-list-item routerLink="/my-sprint/sintesi-collaboratori">
+        <mat-icon>people</mat-icon>
+        <span class="mys-ml-2"> Sintesi per collaboratori </span>
+      </mat-list-item>
+      <mat-list-item routerLink="/my-sprint/gestionale-uo">
+        <mat-icon>admin_panel_settings</mat-icon>
+        <span class="mys-ml-2"> Gestionale Unità organizzativa </span>
+      </mat-list-item>
+      <mat-list-item routerLink="/my-sprint/gestionale-collaboratori">
+        <mat-icon>admin_panel_settings</mat-icon>
+        <span class="mys-ml-2"> Gestionale per collaboratori</span>
+      </mat-list-item>
+      <mat-list-item routerLink="/my-sprint/workflow-obbiettivi">
+        <mat-icon>account_tree</mat-icon>
+        <span class="mys-ml-2">Workflow Obbiettivi</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="mys-sidenav-content">
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <img class="mys-image" src="assets/img/logo.png" alt="Logo di sprint">
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
