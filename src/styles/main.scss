@@ -28,9 +28,8 @@ html {
 }
 
 mat-tooltip-component {
-  .mat-tooltip {
-    background-color: #607d8b;
-    color: #fafafa;
+  .mat-tooltip {  
+    background-color: map-get(palette.$primary-palette, 500);
   }
 }
 

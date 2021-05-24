@@ -1,0 +1,38 @@
+<table mat-table [dataSource]="attivitaDataSource" class="mys-w-100">
+
+  <ng-container matColumnDef="soggetto">
+    <th mat-header-cell *matHeaderCellDef> Soggetto </th>
+    <td mat-cell *matCellDef="let element"> <span class="mys-text-color-primary">{{element.soggetto}}</span> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="attivita">
+    <th mat-header-cell *matHeaderCellDef> Programmazione </th>
+    <td mat-cell *matCellDef="let element">
+      <p class="mys-d-flex mys-align-items-center">
+        N° Attività :
+        <mat-icon matTooltip="Attività in bozza" class="mys-mx-3" [matBadge]="element.attivita.bozza"
+          [matBadgeHidden]="element.attivita.bozza <= 0" matBadgeColor="accent" color="primary">
+          pending</mat-icon>
+        <mat-icon matTooltip="Attività da fare" class="mys-mx-3" [matBadge]="element.attivita.daFare"
+          [matBadgeHidden]="element.attivita.daFare <= 0" matBadgeColor="accent" color="primary">
+          assignment</mat-icon>
+        <mat-icon matTooltip="Attività sospese" class="mys-mx-3" [matBadge]="element.attivita.Sospesa"
+          [matBadgeHidden]="element.attivita.sospesa <= 0" matBadgeColor="accent" color="primary">
+          pan_tool</mat-icon>
+        <mat-icon matTooltip="Attività in esecuzione" class="mys-mx-3" [matBadge]="element.attivita.inEsecuzione"
+          [matBadgeHidden]="element.attivita.inEsecuzione <= 0" matBadgeColor="accent" color="primary">
+          construction</mat-icon>
+        <mat-icon matTooltip="Attività completate" class="mys-mx-3" [matBadge]="element.attivita.completata"
+          [matBadgeHidden]="element.attivita.completata <= 0" matBadgeColor="accent" color="primary">
+          hourglass_full</mat-icon>
+        <mat-icon matTooltip="Attività non necessarie" class="mys-mx-3" [matBadge]="element.attivita.nonNecessaria"
+          [matBadgeHidden]="element.attivita.nonNecessaria <= 0" matBadgeColor="accent" color="primary">
+          trending_down</mat-icon>
+      </p>
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="attivitaDisplayedColumns"></tr>
+  <tr class="mys-dblock" mat-row *matRowDef="let row; columns: attivitaDisplayedColumns;"></tr>
+</table>

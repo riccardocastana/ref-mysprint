@@ -1,0 +1,38 @@
+<table mat-table [dataSource]="kpiDataSource" class="mys-w-100">
+
+  <ng-container matColumnDef="soggetto">
+    <th mat-header-cell *matHeaderCellDef> Soggetto </th>
+    <td mat-cell *matCellDef="let element"> <span class="mys-text-color-primary">{{element.soggetto}}</span> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="kpi">
+    <th mat-header-cell *matHeaderCellDef> Programmazione </th>
+    <td mat-cell *matCellDef="let element">
+      <p class="mys-d-flex mys-align-items-center">
+        N° Kpi :
+        <mat-icon matTooltip="Kpi in bozza" class="mys-mx-3" [matBadge]="element.kpi.bozza"
+          [matBadgeHidden]="element.kpi.bozza <= 0" matBadgeColor="accent" color="primary">
+          pending</mat-icon>
+        <mat-icon matTooltip="Kpi da fare" class="mys-mx-3" [matBadge]="element.kpi.daFare"
+          [matBadgeHidden]="element.kpi.daFare <= 0" matBadgeColor="accent" color="primary">
+          assignment</mat-icon>
+        <mat-icon matTooltip="Kpi sospese" class="mys-mx-3" [matBadge]="element.kpi.Sospesa"
+          [matBadgeHidden]="element.kpi.sospesa <= 0" matBadgeColor="accent" color="primary">
+          pan_tool</mat-icon>
+        <mat-icon matTooltip="Kpi in esecuzione" class="mys-mx-3" [matBadge]="element.kpi.inEsecuzione"
+          [matBadgeHidden]="element.kpi.inEsecuzione <= 0" matBadgeColor="accent" color="primary">
+          construction</mat-icon>
+        <mat-icon matTooltip="Kpi completate" class="mys-mx-3" [matBadge]="element.kpi.completata"
+          [matBadgeHidden]="element.kpi.completata <= 0" matBadgeColor="accent" color="primary">
+          hourglass_full</mat-icon>
+        <mat-icon matTooltip="Kpi non necessarie" class="mys-mx-3" [matBadge]="element.kpi.nonNecessaria"
+          [matBadgeHidden]="element.kpi.nonNecessaria <= 0" matBadgeColor="accent" color="primary">
+          trending_down</mat-icon>
+      </p>
+    </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="kpiDisplayedColumns"></tr>
+  <tr class="mys-dblock" mat-row *matRowDef="let row; columns: kpiDisplayedColumns;"></tr>
+</table>

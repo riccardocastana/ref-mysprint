@@ -1,0 +1,33 @@
+  @use '../../../../styles/palette';
+
+  table td .mys-obbiettivo {
+
+    display: inline-block;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    text-align: center;
+    border: .5px solid rgb(182, 182, 182);
+    line-height: 1.5rem;
+    &:not(:last-child){
+      margin-right: 1rem;
+    }
+    &:first-child {
+      margin-left: 1rem;
+    }
+    & mat-icon {
+      font-size: .5rem;
+    }
+  }
+
+  table td {
+    padding: .5rem 0;
+  }
+  mat-accordion mat-expansion-panel mat-expansion-panel-header {
+    background-color: map-get(palette.$primary-palette, 50);
+  }
+
+  ::ng-deep.mat-badge-accent .mat-badge-content{
+    background:transparent;
+    color:  map-get(palette.$accent-palette, 500);
+  }

@@ -1,0 +1,38 @@
+<table mat-table [dataSource]="obiettiviDataSource" class="mys-w-100">
+
+  <ng-container matColumnDef="soggetto">
+    <th mat-header-cell *matHeaderCellDef> Soggetto </th>
+    <td mat-cell *matCellDef="let element"> <span class="mys-text-color-primary">{{element.soggetto}}</span> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="programmazione">
+    <th mat-header-cell *matHeaderCellDef> Programmazione </th>
+    <td mat-cell *matCellDef="let element">
+      N° Obiettivi : {{element.programmazione}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="esecuzione">
+    <th mat-header-cell *matHeaderCellDef> Esecuzione </th>
+    <td mat-cell *matCellDef="let element">
+      N° Obiettivi: {{element.esecuzione}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="valutazione">
+    <th mat-header-cell *matHeaderCellDef> Valutazione </th>
+    <td mat-cell *matCellDef="let element">
+      N° Obiettivi: {{element.valutazione}}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rendicontazione">
+    <th mat-header-cell *matHeaderCellDef> Rendicontazione </th>
+    <td mat-cell *matCellDef="let element">
+      N° Obiettivi: {{element.rendicontazione}}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="obiettiviDisplayedColumns"></tr>
+  <tr class="mys-dblock" mat-row *matRowDef="let row; columns: obiettiviDisplayedColumns;"></tr>
+</table>

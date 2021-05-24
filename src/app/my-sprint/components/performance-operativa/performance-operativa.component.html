@@ -1,0 +1,142 @@
+<table mat-table [dataSource]="pOperativaDataSource" class="mys-w-100">
+
+  <ng-container matColumnDef="piano">
+    <th mat-header-cell *matHeaderCellDef> Piano </th>
+    <td mat-cell *matCellDef="let element"> <span class="mys-text-color-primary">{{element.piano}}</span> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="programmazione">
+    <th mat-header-cell *matHeaderCellDef> Programmazione </th>
+    <td mat-cell *matCellDef="let element">
+      <ng-container *ngIf="element.programmazione as programmazione">
+        <div *ngFor="let element of programmazione" class="mys-mt-4">
+          <p class="mys-d-flex mys-align-items-center"><span
+              class="mys-text-color-accent mys-mr-3">{{element.nome}}</span>
+            {{element.periodoProgrammazione}}
+            <mat-icon class="mys-ml-3 mys-text-color-accent mys-cursor-pointer">open_in_new</mat-icon>
+          </p>
+          <p>{{element.fase}} {{element.periodoFase}}</p>
+          <p class="mys-d-flex mys-align-items-center"> N.° Obbiettivi:
+            <mat-icon matTooltip="Scheda In bozza" class="mys-mx-3" [matBadge]="element.obiettivi.bozze"
+              [matBadgeHidden]="element.obiettivi.bozze <= 0" matBadgeColor="accent" color="primary">
+              pending</mat-icon>
+            <mat-icon matTooltip="Scheda Inserita" class="mys-mx-3" [matBadge]="element.obiettivi.inserita"
+              [matBadgeHidden]="element.obiettivi.inserita <= 0" matBadgeColor="accent" color="primary">
+              upload_file</mat-icon>
+            <mat-icon matTooltip="Scheda In verifica" class="mys-mx-3" [matBadge]="element.obiettivi.inVerifica"
+              [matBadgeHidden]="element.obiettivi.inVerifica <= 0" matBadgeColor="accent" color="primary">
+              fact_check</mat-icon>
+            <mat-icon matTooltip="Scheda Completata" class="mys-mx-3" [matBadge]="element.obiettivi.completata"
+              [matBadgeHidden]="element.obiettivi.completata <= 0" matBadgeColor="accent" color="primary">
+              hourglass_full</mat-icon>
+            <mat-icon matTooltip="Scheda Approvata" class="mys-mx-3" [matBadge]="element.obiettivi.approvata"
+              [matBadgeHidden]="element.obiettivi.approvata <= 0" matBadgeColor="accent" color="primary">
+              verified</mat-icon>
+          </p>
+        </div>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="esecuzione">
+    <th mat-header-cell *matHeaderCellDef> Esecuzione </th>
+    <td mat-cell *matCellDef="let element">
+      <ng-container *ngIf="element.esecuzione as esecuzione">
+        <div *ngFor="let element of esecuzione" class="mys-mt-4">
+          <p class="mys-d-flex mys-align-items-center"><span
+              class="mys-text-color-accent mys-mr-3">{{element.nome}}</span>
+            {{element.periodoEsecuzione}}
+            <mat-icon class="mys-ml-3 mys-text-color-accent mys-cursor-pointer">open_in_new</mat-icon>
+          </p>
+          <p>{{element.fase}} {{element.periodoFase}}</p>
+          <p class="mys-d-flex mys-align-items-center"> N.° Obbiettivi:
+            <mat-icon matTooltip="Scheda In bozza" class="mys-mx-3" [matBadge]="element.obiettivi.bozze"
+              [matBadgeHidden]="element.obiettivi.bozze <= 0" matBadgeColor="accent" color="primary">
+              pending</mat-icon>
+            <mat-icon matTooltip="Scheda Inserita" class="mys-mx-3" [matBadge]="element.obiettivi.inserita"
+              [matBadgeHidden]="element.obiettivi.inserita <= 0" matBadgeColor="accent" color="primary">
+              upload_file</mat-icon>
+            <mat-icon matTooltip="Scheda In verifica" class="mys-mx-3" [matBadge]="element.obiettivi.inVerifica"
+              [matBadgeHidden]="element.obiettivi.inVerifica <= 0" matBadgeColor="accent" color="primary">
+              fact_check</mat-icon>
+            <mat-icon matTooltip="Scheda Completata" class="mys-mx-3" [matBadge]="element.obiettivi.completata"
+              [matBadgeHidden]="element.obiettivi.completata <= 0" matBadgeColor="accent" color="primary">
+              hourglass_full</mat-icon>
+            <mat-icon matTooltip="Scheda Approvata" class="mys-mx-3" [matBadge]="element.obiettivi.approvata"
+              [matBadgeHidden]="element.obiettivi.approvata <= 0" matBadgeColor="accent" color="primary">
+              verified</mat-icon>
+          </p>
+        </div>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="valutazione">
+    <th mat-header-cell *matHeaderCellDef> Valutazione </th>
+    <td mat-cell *matCellDef="let element">
+      <ng-container *ngIf="element.valutazione as valutazione">
+        <ng-container *ngFor="let element  of valutazione">
+          <p class="mys-d-flex mys-align-items-center"><span
+              class="mys-text-color-accent mys-mr-3">{{element.nome}}</span>
+            {{element.periodoValutazione}}
+            <mat-icon class="mys-ml-3 mys-text-color-accent mys-cursor-pointer">open_in_new</mat-icon>
+          </p>
+          <p>{{element.fase}} {{element.periodoFase}}</p>
+          <p class="mys-d-flex mys-align-items-center"> N.° Obbiettivi:
+            <mat-icon matTooltip="Scheda In bozza" class="mys-mx-3" [matBadge]="element.obiettivi.bozze"
+              [matBadgeHidden]="element.obiettivi.bozze <= 0" matBadgeColor="accent" color="primary">
+              pending</mat-icon>
+            <mat-icon matTooltip="Scheda Inserita" class="mys-mx-3" [matBadge]="element.obiettivi.inserita"
+              [matBadgeHidden]="element.obiettivi.inserita <= 0" matBadgeColor="accent" color="primary">
+              upload_file</mat-icon>
+            <mat-icon matTooltip="Scheda In verifica" class="mys-mx-3" [matBadge]="element.obiettivi.inVerifica"
+              [matBadgeHidden]="element.obiettivi.inVerifica <= 0" matBadgeColor="accent" color="primary">
+              fact_check</mat-icon>
+            <mat-icon matTooltip="Scheda Completata" class="mys-mx-3" [matBadge]="element.obiettivi.completata"
+              [matBadgeHidden]="element.obiettivi.completata <= 0" matBadgeColor="accent" color="primary">
+              hourglass_full</mat-icon>
+            <mat-icon matTooltip="Scheda Approvata" class="mys-mx-3" [matBadge]="element.obiettivi.approvata"
+              [matBadgeHidden]="element.obiettivi.approvata <= 0" matBadgeColor="accent" color="primary">
+              verified</mat-icon>
+          </p>
+        </ng-container>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rendicontazione">
+    <th mat-header-cell *matHeaderCellDef> Rendicontazione </th>
+    <td mat-cell *matCellDef="let element">
+      <ng-container *ngIf="element.rendicontazione as rendicontazione">
+        <div *ngFor="let element of rendicontazione">
+          <p class="mys-d-flex mys-align-items-center"><span
+              class="mys-text-color-accent mys-mr-3">{{element.nome}}</span>
+            {{element.periodoRendicontazione}}
+            <mat-icon class="mys-ml-3 mys-text-color-accent mys-cursor-pointer">open_in_new</mat-icon>
+          </p>
+          <p>{{element.fase}} {{element.periodoFase}}</p>
+          <p class="mys-d-flex mys-align-items-center"> N.° Obbiettivi:
+            <mat-icon matTooltip="Scheda In bozza" class="mys-mx-3" [matBadge]="element.obiettivi.bozze"
+              [matBadgeHidden]="element.obiettivi.bozze <= 0" matBadgeColor="accent" color="primary">
+              pending</mat-icon>
+            <mat-icon matTooltip="Scheda Inserita" class="mys-mx-3" [matBadge]="element.obiettivi.inserita"
+              [matBadgeHidden]="element.obiettivi.inserita <= 0" matBadgeColor="accent" color="primary">
+              upload_file</mat-icon>
+            <mat-icon matTooltip="Scheda In verifica" class="mys-mx-3" [matBadge]="element.obiettivi.inVerifica"
+              [matBadgeHidden]="element.obiettivi.inVerifica <= 0" matBadgeColor="accent" color="primary">
+              fact_check</mat-icon>
+            <mat-icon matTooltip="Scheda Completata" class="mys-mx-3" [matBadge]="element.obiettivi.completata"
+              [matBadgeHidden]="element.obiettivi.completata <= 0" matBadgeColor="accent" color="primary">
+              hourglass_full</mat-icon>
+            <mat-icon matTooltip="Scheda Approvata" class="mys-mx-3" [matBadge]="element.obiettivi.approvata"
+              [matBadgeHidden]="element.obiettivi.approvata <= 0" matBadgeColor="accent" color="primary">
+              verified</mat-icon>
+          </p>
+        </div>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="pOperativaDisplayedColumns"></tr>
+  <tr class="mys-dblock" mat-row *matRowDef="let row; columns: pOperativaDisplayedColumns;"></tr>
+</table>

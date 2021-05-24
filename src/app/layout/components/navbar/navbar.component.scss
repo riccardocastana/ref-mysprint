@@ -19,6 +19,17 @@
   background-color: map-get(palette.$primary-palette, 500);
 }
 
+main {
+  background-color: #fff;
+}
 .mat-list-item {
   color: palette.$light-primary-text;
+}
+
+.mys-sidenav-container {
+
+  background-color: white;
+  & .mat-toolbar {
+    background-color: #fafafa;
+  }
 }
