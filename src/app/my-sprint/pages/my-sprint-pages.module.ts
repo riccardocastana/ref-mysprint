@@ -8,6 +8,13 @@ import { WorkflowComponent } from './workflow/workflow.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { CommonModule } from '@angular/common';
 import { MySprintComponentsModule } from '../components/my-sprint-components.module';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations:[
@@ -21,7 +28,14 @@ import { MySprintComponentsModule } from '../components/my-sprint-components.mod
   imports:[
     CommonModule,
     MatExpansionModule,
-    MySprintComponentsModule
+    MySprintComponentsModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatChipsModule,
+    MatIconModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatCardModule
   ]
 })
 export class MySprintPagesModule {}
