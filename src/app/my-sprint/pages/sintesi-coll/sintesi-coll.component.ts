@@ -21,13 +21,10 @@ export class SintesiCollComponent implements OnInit {
     }
   ];
 
-  statiObiettivo = [
-    'Bozza',
-    'Inserita',
-    'In verifica',
-    'Completata',
-    'Approvata',
-    'Rifiutata'
+  personeRiferimento = [
+    'Tizio',
+    'Caio',
+    'Sempronio',
   ];
   constructor() { }
 

@@ -1,1 +1,53 @@
-<h1>Gestionale Unità Organizzativa</h1>
+<div class="mys-d-flex mys-justify-content-between mys-align-items-start">
+  <h1 class="mys-font-size-30 mys-text-color-primary">Gestionale Unità Organizzativa</h1>
+  <button mat-raised-button color="accent">
+    <mat-icon>download</mat-icon>
+  </button>
+</div>
+
+<section class="mys-d-flex mys-justify-content-between">
+  <div>
+    <span class="mys-text-color-primary">Persona</span>
+    <span class="mys-mx-5">Nome persona</span>
+    <button mat-button color="primary">Cambia Persona</button>
+  </div>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Anno di riferimento</mat-label>
+      <mat-select [(value)]="currentYear">
+        <mat-option *ngFor="let date of dates" [value]="date">
+          {{date}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</section>
+<span class="mys-text-color-primary">UO</span>
+<span class="mys-mx-5">Nome UO</span>
+<section class="mys-d-flex mys-justify-content-between mys-align-items-start mys-mt-5">
+  <div>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title class="mys-text-color-primary">Filtri Rapidi
+
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+        <mat-chip-list aria-label="Selezione dei filtri rapidi" [multiple]="multiple" [selectable]="selectable">
+          <mat-chip [ngClass]="chip.state ? 'mys-chip-selected': 'mys-chip'" [selected]="chip.state"
+            (click)="chip.state=!chip.state;changeSelected(chip.viewValue)" color="primary"
+            *ngFor="let chip of chipsOption" [selectable]="selectable">{{chip.viewValue}}</mat-chip>
+        </mat-chip-list>
+        <mat-form-field appearance="outline" class="mys-w-100 mys-mt-4">
+          <mat-label>Stato obiettivo</mat-label>
+          <mat-select multiple>
+            <mat-option *ngFor="let stato of statiObiettivo" [value]="stato">
+              {{stato}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <button mat-raised-button color="accent">Crea Obiettivo</button>
+</section>
