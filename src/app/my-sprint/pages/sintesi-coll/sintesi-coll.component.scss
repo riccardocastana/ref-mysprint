@@ -1,0 +1,20 @@
+@use '../../../../styles/palette';
+
+.mys-chip-selected {
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.377) ;
+}
+
+.mys-chip {
+  background-color: map-get(palette.$accent-palette,200 );
+  color: palette.$dark-primary-text;
+}
+section {
+  .mat-card{
+    padding:2rem;
+    width: fit-content;
+    &:hover {
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.377) ;
+    }
+
+}  
+}

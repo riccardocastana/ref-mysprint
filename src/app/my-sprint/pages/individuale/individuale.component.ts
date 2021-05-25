@@ -13,8 +13,6 @@ export class IndividualeComponent implements OnInit {
 
   visible = true;
   selectable = true;
-  removable = true;
-  addOnBlur = true;
   multiple = true;
 
   statiObiettivo= [
@@ -26,7 +24,6 @@ export class IndividualeComponent implements OnInit {
     'Rifiutata'
   ];
 
-  readonly separatorKeysCodes = [ENTER, COMMA] as const;
   chipsOption = [
     {
       viewValue: 'Sono referente',
