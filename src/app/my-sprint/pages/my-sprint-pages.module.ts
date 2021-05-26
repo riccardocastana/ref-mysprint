@@ -15,7 +15,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker'
 @NgModule({
   declarations:[
     HomepageComponent,
@@ -27,6 +28,7 @@ import { MatCardModule } from '@angular/material/card';
   ],
   imports:[
     CommonModule,
+    MatNativeDateModule,
     MatExpansionModule,
     MySprintComponentsModule,
     MatSelectModule,
@@ -35,7 +37,8 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatInputModule,
     MatAutocompleteModule,
-    MatCardModule
+    MatCardModule,
+    MatDatepickerModule
   ]
 })
 export class MySprintPagesModule {}

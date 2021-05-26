@@ -5,7 +5,7 @@
   </button>
 </div>
 
-<section class="mys-d-flex mys-justify-content-between">
+<section class="mys-d-flex mys-justify-content-between mys-align-items-end mys-mb-3">
   <div>
     <span class="mys-text-color-primary">Persona</span>
     <span class="mys-mx-5">Nome persona</span>
@@ -23,7 +23,7 @@
   </div>
 </section>
 
-<section class="mys-d-flex mys-justify-content-between mys-align-items-start">
+<section class="mys-d-flex mys-justify-content-between mys-align-items-end">
   <div>
     <mat-card>
       <mat-card-header>
@@ -37,42 +37,56 @@
             (click)="chip.state=!chip.state;changeSelected(chip.viewValue)" color="primary"
             *ngFor="let chip of chipsOption" [selectable]="selectable">{{chip.viewValue}}</mat-chip>
         </mat-chip-list>
+        
         <mat-form-field appearance="outline" class="mys-w-100 mys-mt-4">
-          <mat-label>Stato obiettivo</mat-label>
-          <mat-select multiple>
-            <mat-option *ngFor="let stato of statiObiettivo" [value]="stato">
-              {{stato}}
-            </mat-option>
+          <mat-label>Stato Obiettivo</mat-label>
+          <mat-select #statiSel multiple>
+            <mat-select-trigger *ngIf="allStatiSelected">
+              Tutti selezionati
+            </mat-select-trigger>
+            <button mat-button class="mys-w-100" (click)="toggleAllStatiSelection()">
+              <span *ngIf="!allStatiSelected;else allSelected" class="mys-d-flex mys-align-items-center">
+                <mat-icon color="primary">fact_check</mat-icon>
+                Seleziona tutti
+              </span>
+              <ng-template #allSelected>
+                <span class="mys-d-flex mys-align-items-center">
+                  <mat-icon color="accent">delete_sweep</mat-icon>
+                  Deseleziona tutti
+                </span>
+              </ng-template>
+            </button>
+            <mat-optgroup label="Stati">
+              <mat-option *ngFor="let stato of statiObiettivo" [value]="stato">
+                {{stato}}
+              </mat-option>
+            </mat-optgroup>
           </mat-select>
         </mat-form-field>
+        
       </mat-card-actions>
     </mat-card>
   </div>
   <button mat-raised-button color="accent">Crea Obiettivo</button>
 </section>
-<mat-card class="mys-mt-5">
-  <mat-card-header>
-    <mat-card-title class="mys-text-color-primary">Obiettivo Istituzionale</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <p>Nessun Obiettivo da visualizzare</p>
-  </mat-card-content>
-</mat-card>
+<mat-accordion multi="true">
+  <mat-expansion-panel>
 
-<mat-card class="mys-mt-5">
-  <mat-card-header>
-    <mat-card-title class="mys-text-color-primary">Obiettivo Organizzativo</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <p>Nessun Obiettivo da visualizzare</p>
-  </mat-card-content>
-</mat-card>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span class="mys-font-w5 mys-text-color-primary">Performance strategica</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
 
-<mat-card class="mys-mt-5">
-  <mat-card-header>
-    <mat-card-title class="mys-text-color-primary">Obiettivo Custom</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <p>Nessun Obiettivo da visualizzare</p>
-  </mat-card-content>
-</mat-card>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion>
+    <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span class="mys-font-w5 mys-text-color-primary">Performance Operativa</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+  </mat-expansion-panel>
+</mat-accordion>

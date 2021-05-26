@@ -5,7 +5,7 @@
   </button>
 </div>
 
-<section class="mys-d-flex mys-justify-content-between">
+<section class="mys-d-flex mys-justify-content-between mys-align-items-end mys-mb-3">
   <div>
     <span class="mys-text-color-primary">Persona</span>
     <span class="mys-mx-5">Nome persona</span>
@@ -21,9 +21,15 @@
     </mat-form-field>
   </div>
 </section>
-<span class="mys-text-color-primary">UO</span>
-<span class="mys-mx-5">Nome UO</span>
-<section class="mys-d-flex mys-mt-5 mys-justify-content-between mys-align-items-start">
+<section class="mys-d-flex mys-justify-content-between">
+  <p>
+    <span class="mys-text-color-primary">UO</span>
+    <span class="mys-mx-5">Nome UO</span>
+  </p>
+  <button mat-raised-button color="accent">Crea Obiettivo</button>
+
+</section>
+<section class="mys-d-flex mys-mt-5 mys-justify-content-between mys-align-items-end">
   <div>
     <mat-card>
       <mat-card-header>
@@ -37,16 +43,61 @@
             (click)="chip.state=!chip.state;changeSelected(chip.viewValue)" color="primary"
             *ngFor="let chip of chipsOption" [selectable]="selectable">{{chip.viewValue}}</mat-chip>
         </mat-chip-list>
-        <mat-form-field appearance="outline" class="mys-w-100 mys-mt-4">
-          <mat-label>Persona</mat-label>
-          <mat-select multiple>
-            <mat-option *ngFor="let persona of personeRiferimento" [value]="persona">
-              {{persona}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+
+        <div class="mys-d-flex mys-flex-row mys-mt-2">
+          <mat-form-field appearance="outline" *ngIf="isUOSelActive" class="mys-mr-3">
+            <mat-label>UO Figlie</mat-label>
+            <mat-select #UOFiglieSel multiple >
+              <mat-select-trigger *ngIf="allUOFiglieSelected">
+                Tutte le UO selezionate
+              </mat-select-trigger>
+              <button mat-button (click)="toggleAllUOFiglieSelection()">
+                <span *ngIf="!allUOFiglieSelected;else allSelected" class="mys-d-flex mys-align-items-center">
+                  <mat-icon color="primary">fact_check</mat-icon>
+                  Seleziona tutti
+                </span>
+                <ng-template #allSelected>
+                  <span class="mys-d-flex mys-align-items-center">
+                    <mat-icon color="accent">delete_sweep</mat-icon>
+                    Deseleziona tutti
+                  </span>
+                </ng-template>
+              </button>
+              <mat-optgroup label="Persone">
+                <mat-option *ngFor="let uo of uoFiglie" [value]="uo">
+                  {{uo}}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" class="mys-w-100">
+            <mat-label>Persone</mat-label>
+            <mat-select #personeSel multiple>
+              <mat-select-trigger *ngIf="allPersoneSelected">
+                Tutti selezionati
+              </mat-select-trigger>
+              <button mat-button class="mys-w-100" (click)="toggleAllPersoneSelection()">
+                <span *ngIf="!allPersoneSelected;else allSelected" class="mys-d-flex mys-align-items-center">
+                  <mat-icon color="primary">fact_check</mat-icon>
+                  Seleziona tutti
+                </span>
+                <ng-template #allSelected>
+                  <span class="mys-d-flex mys-align-items-center">
+                    <mat-icon color="accent">delete_sweep</mat-icon>
+                    Deseleziona tutti
+                  </span>
+                </ng-template>
+              </button>
+              <mat-optgroup label="Persone">
+                <mat-option *ngFor="let persona of persone" [value]="persona">
+                  {{persona}}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </mat-card-actions>
     </mat-card>
   </div>
-  <button mat-raised-button color="accent">Crea Obiettivo</button>
 </section>
