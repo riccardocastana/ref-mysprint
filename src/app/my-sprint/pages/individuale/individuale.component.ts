@@ -1,5 +1,7 @@
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatOption } from '@angular/material/core';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
   selector: 'app-individuale',
@@ -7,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./individuale.component.scss']
 })
 export class IndividualeComponent implements OnInit {
+  @ViewChild('statiSel') statiSelect!: MatSelect;
+  allStatiSelected = false;
+
+
   dates: number[] = [];
   currentYear = new Date().getFullYear();
   selectedChips: string[] = [];
@@ -15,7 +21,7 @@ export class IndividualeComponent implements OnInit {
   selectable = true;
   multiple = true;
 
-  statiObiettivo= [
+  statiObiettivo = [
     'Bozza',
     'Inserita',
     'In verifica',
@@ -58,6 +64,16 @@ export class IndividualeComponent implements OnInit {
       this.selectedChips.splice(index, 1);
     } else {
       this.selectedChips.push(query);
+    }
+  }
+
+  toggleAllStatiSelection() {
+    this.allStatiSelected = !this.allStatiSelected;  
+
+    if (this.allStatiSelected) {
+      this.statiSelect.options.forEach((item: MatOption) => item.select());
+    } else {
+      this.statiSelect.options.forEach((item: MatOption) => { item.deselect() });
     }
   }
 }
