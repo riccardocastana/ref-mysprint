@@ -12,11 +12,15 @@ export class GestionaleUoComponent implements OnInit {
   @ViewChild('personeSel') personeSelect!: MatSelect;
   @ViewChild('pianoSel') pianoSelect!: MatSelect;
   @ViewChild('statiSel') statiSelect!: MatSelect;
+  @ViewChild('UOFiglieSel') uoFiglieSel!: MatSelect;
 
   allPersoneSelected = false;
   allPianoSelected = false;
   allStatiSelected = false;
 
+  isUOSelActive = false;
+  allUOFiglieSelected =  false;
+  
   dates: number[] = [];
   currentYear = new Date().getFullYear();
   selectedChips: string[] = [];
@@ -49,6 +53,11 @@ export class GestionaleUoComponent implements OnInit {
     'Caio',
     'Sempronio',
   ];
+  uoFiglie = [
+    'UO figlia',
+    'Seconda UO figlia',
+    'Terza UO figlia'
+  ];
   constructor() { }
 
   ngOnInit(): void {
@@ -57,7 +66,13 @@ export class GestionaleUoComponent implements OnInit {
     }
   }
   changeSelected(query: string) {
+    let activatedChip;
+    this.chipsOption.forEach(chip => {
+      if (chip.state) return
+      else { }
+    })
 
+    this.isUOSelActive = !this.isUOSelActive;
     const index = this.selectedChips.indexOf(query);
     if (index >= 0) {
       this.selectedChips.splice(index, 1);
@@ -91,6 +106,15 @@ export class GestionaleUoComponent implements OnInit {
       this.statiSelect.options.forEach((item: MatOption) => item.select());
     } else {
       this.statiSelect.options.forEach((item: MatOption) => { item.deselect() });
+    }
+  }
+  toggleAllUOFiglieSelection() {
+    this.allUOFiglieSelected = !this.allUOFiglieSelected;
+
+    if (this.allUOFiglieSelected) {
+      this.uoFiglieSel.options.forEach((item: MatOption) => item.select());
+    } else {
+      this.uoFiglieSel.options.forEach((item: MatOption) => { item.deselect() });
     }
   }
 

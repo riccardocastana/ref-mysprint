@@ -124,6 +124,32 @@
             </mat-select>
           </mat-form-field>
 
+          <mat-form-field appearance="outline" *ngIf="isUOSelActive" class="mys-mr-3">
+            <mat-label>UO Figlie</mat-label>
+            <mat-select #UOFiglieSel multiple>
+              <mat-select-trigger *ngIf="allUOFiglieSelected">
+                Tutte le UO selezionate
+              </mat-select-trigger>
+              <button mat-button (click)="toggleAllUOFiglieSelection()">
+                <span *ngIf="!allUOFiglieSelected;else allSelected" class="mys-d-flex mys-align-items-center">
+                  <mat-icon color="primary">fact_check</mat-icon>
+                  Seleziona tutti
+                </span>
+                <ng-template #allSelected>
+                  <span class="mys-d-flex mys-align-items-center">
+                    <mat-icon color="accent">delete_sweep</mat-icon>
+                    Deseleziona tutti
+                  </span>
+                </ng-template>
+              </button>
+              <mat-optgroup label="UO Figlie">
+                <mat-option *ngFor="let uo of uoFiglie" [value]="uo">
+                  {{uo}}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </mat-form-field>
+
         </div>
       </mat-card-actions>
     </mat-card>
