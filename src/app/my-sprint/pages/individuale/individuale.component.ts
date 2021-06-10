@@ -10,7 +10,9 @@ import { MatSelect } from '@angular/material/select';
 })
 export class IndividualeComponent implements OnInit {
   @ViewChild('statiSel') statiSelect!: MatSelect;
+  @ViewChild('pianoSel') pianiSelect!: MatSelect;
   allStatiSelected = false;
+  allPianiSelected = false;
 
 
   dates: number[] = [];
@@ -49,6 +51,11 @@ export class IndividualeComponent implements OnInit {
     }
   ];
 
+  piani = [
+    'Piano Operativo',
+    'Piano Strategico',
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -76,4 +83,14 @@ export class IndividualeComponent implements OnInit {
       this.statiSelect.options.forEach((item: MatOption) => { item.deselect() });
     }
   }
+
+  toggleAllPianoSelection() : void {
+    this.allPianiSelected = !this.allPianiSelected;
+    if (this.allPianiSelected) {
+      this.pianiSelect.options.forEach((item: MatOption) => item.select());
+    } else {
+      this.pianiSelect.options.forEach((item: MatOption) => { item.deselect() });
+    }
+  }
+  
 }

@@ -9,6 +9,9 @@ import { KpiComponent } from './homepage/kpi/kpi.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { TableObiettivoIstituzionaleComponent } from './individuale/table-obiettivo-istituzionale/table-obiettivo-istituzionale.component';
+import { TableObiettivoOrganizzativoComponent } from './individuale/table-obiettivo-organizzativo/table-obiettivo-organizzativo.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations:[
@@ -16,7 +19,9 @@ import { MatTableModule } from '@angular/material/table';
     PerformanceOperativaComponent,
     ObiettiviComponent,
     AttivitaComponent,
-    KpiComponent
+    KpiComponent,
+    TableObiettivoIstituzionaleComponent,
+    TableObiettivoOrganizzativoComponent
   ],
   imports:[
     CommonModule,
@@ -24,13 +29,16 @@ import { MatTableModule } from '@angular/material/table';
     MatTooltipModule,
     MatBadgeModule,
     MatIconModule,
+    MatProgressSpinnerModule
   ],
   exports:[
     PerformanceStrategicaComponent,
     PerformanceOperativaComponent,
     ObiettiviComponent,
     AttivitaComponent,
-    KpiComponent
+    KpiComponent,
+    TableObiettivoIstituzionaleComponent,
+    TableObiettivoOrganizzativoComponent
   ]
 })
 export class MySprintComponentsModule {}
