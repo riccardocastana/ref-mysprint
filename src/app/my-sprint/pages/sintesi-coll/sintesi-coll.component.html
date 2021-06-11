@@ -102,3 +102,30 @@
     </mat-card>
   </div>
 </section>
+<section class="mys-pt-5" *ngFor="let coll of collaboratori">
+  <mat-card>
+      <section class="mys-d-flex mys-justify-content-between mys-align-items-center mys-my-2">
+        <div>
+          <span class="mys-font-size-20 mys-text-color-primary">{{coll.codice}}-{{coll.nome}}</span>
+        </div>
+        <div *ngIf="coll.hasAnomalies;else hasNotAnomalies"  matTooltip="Contiene anomalie">
+          <mat-icon color="warn">warning</mat-icon>
+        </div>
+        <ng-template #hasNotAnomalies>
+          <mat-icon color="primary" matTooltip="Non contiene anomalie">verified</mat-icon>
+        </ng-template>
+        <button mat-button color="primary">Apri dashboard personale</button>
+      </section>
+      <section *ngFor="let obiettivo of coll.obiettivi">
+        <h2 class="mys-text-color-primary mys-font-w5 mys-bg-color-light-grey mys-pl-3">{{obiettivo.title}}</h2>
+        <div class="mys-d-flex mys-justify-content-between">
+          <div>
+            <p class="nys-font-size-14 mys-font-w5 mys-pl-3">{{obiettivo.codUO}}-{{obiettivo.nameUO}}</p>
+          </div>
+          <div>
+            <p><strong>Totale Obiettivi: </strong>{{obiettivo.tot}} (di cui <strong>Referente: </strong>{{obiettivo.referente}} e <strong>Coinvolto: </strong>{{obiettivo.coinvolto}}) <span class="mys-text-color-accent">Totale peso: </span>{{obiettivo.peso}}%</p>
+          </div>
+        </div>
+      </section>
+  </mat-card>
+</section>

@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatOption } from '@angular/material/core';
 import { MatSelect } from '@angular/material/select';
+import { collaboratori } from './sintesi-coll-const';
 
 @Component({
-  selector: 'app-sintesi-coll',
+  selector: 'mys-sintesi-coll',
   templateUrl: './sintesi-coll.component.html',
   styleUrls: ['./sintesi-coll.component.scss']
 })
@@ -42,6 +43,7 @@ export class SintesiCollComponent implements OnInit {
     'Terza UO figlia'
   ];
 
+  collaboratori = collaboratori;
   constructor() { }
 
   ngOnInit(): void {

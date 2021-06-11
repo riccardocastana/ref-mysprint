@@ -12,16 +12,16 @@ export class HomepageComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
-    this.test()
+    // this.test()
   }
 
-  httpOptions = {
+  // httpOptions = {
 
-    withCredentials: true,
-  }
+  //   withCredentials: true,
+  // }
 
-  test() {
-    this.httpClient.get("http://localhost:8000/api/public/atenei", this.httpOptions).subscribe();
-  }
+  // test() {
+  //   this.httpClient.get("http://localhost:8000/api/public/atenei", this.httpOptions).subscribe();
+  // }
 
 }

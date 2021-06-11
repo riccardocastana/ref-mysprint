@@ -11,8 +11,8 @@
   color: palette.$dark-primary-text;
   cursor: pointer;
 }
-section {
-  .mat-card{
+div {
+  >.mat-card{
     padding:2rem;
     width: fit-content;
     &:hover {
