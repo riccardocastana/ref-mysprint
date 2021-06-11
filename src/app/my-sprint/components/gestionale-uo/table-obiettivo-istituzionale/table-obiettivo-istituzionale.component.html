@@ -1,0 +1,75 @@
+<table mat-table [dataSource]="obbOrgDataSource" class="mys-w-100">
+
+  <ng-container matColumnDef="obiettivo">
+    <th mat-header-cell *matHeaderCellDef>Obiettivo</th>
+    <td mat-cell *matCellDef="let element">
+      <section class="mys-d-flex mys-justify-content-between mys-align-items-center">
+        <div class="mys-d-flex mys-flex-column mys-mr-3">
+          <mat-icon color="primary">home</mat-icon>
+          <mat-icon color="warn">expand_less</mat-icon>
+        </div>
+        <div class="mys-d-flex mys-flex-column mys-align-items-center mys-mr-3">
+          <span class="mys-text-color-primary">{{element.obiettivo.codScheda}}</span>
+          <mat-icon *ngIf="element.obiettivo.stato.isApproved" color="primary">verified</mat-icon>
+          <mat-icon *ngIf="element.obiettivo.stato.shouldBeMonitored" [ngStyle]="{'color':'#ffd966'}">warning</mat-icon>
+        </div>
+        <div>
+          <p>{{element.obiettivo.name}}</p>
+          <p>{{element.obiettivo.dataInizio}}-{{element.obiettivo.dataFine}}</p>
+        </div>
+        <p class="mys-w-50">{{element.obiettivo.uo}}</p>
+      </section>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rapporto">
+    <th mat-header-cell *matHeaderCellDef>Rapporto</th>
+    <td mat-cell *matCellDef="let element">
+      <p>{{element.rapporto.tipoRapporto}} dal {{element.rapporto.dataInizio}}</p>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="peso">
+    <th mat-header-cell *matHeaderCellDef>Peso</th>
+    <td mat-cell *matCellDef="let element">
+      <p>{{element.peso}}%</p>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="obRaggiunto">
+    <th mat-header-cell *matHeaderCellDef>Obiettivo Raggiunto</th>
+    <td mat-cell *matCellDef="let element">
+      <p *ngIf="!element.obRaggiunto;else spinner">
+        N/A
+      </p>
+      <ng-template #spinner>
+        <p class="mys-text-center mys-font-size-10 mys-text-color-primary">{{element.obRaggiunto}}%</p>
+          <mat-progress-spinner diameter="50" class="example-margin" color="primary" mode="determinate"
+            [value]="element.obRaggiunto">
+          </mat-progress-spinner>
+      </ng-template>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="SALAttivita">
+    <th mat-header-cell *matHeaderCellDef>SAL Attività</th>
+    <td mat-cell *matCellDef="let element">
+      <p *ngIf="!element.SALAttivita;else SAL">N/A</p>
+      <ng-template #SAL>
+        <div [style.background]="setPercentageBackground(element.SALAttivita)" class="mys-sal mys-w-95 mys-mx-auto">
+          <span class="mys-font-size-10 mys-text-color-primary">{{element.SALAttivita}}%</span>
+        </div>
+      </ng-template>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="azioni">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon color="primary">more_horiz</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="obbOrgDisplayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: obbOrgDisplayedColumns;"></tr>
+</table>

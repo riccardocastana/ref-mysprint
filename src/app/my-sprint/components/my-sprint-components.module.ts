@@ -12,6 +12,8 @@ import { MatTableModule } from '@angular/material/table';
 import { TableObiettivoIstituzionaleComponent } from './individuale/table-obiettivo-istituzionale/table-obiettivo-istituzionale.component';
 import { TableObiettivoOrganizzativoComponent } from './individuale/table-obiettivo-organizzativo/table-obiettivo-organizzativo.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TableObiettivoIstituzionaleUOComponent } from './gestionale-uo/table-obiettivo-istituzionale/table-obiettivo-istituzionale.component';
+import { TableObiettivoOrganizzativoUOComponent } from './gestionale-uo/table-obiettivo-organizzativo/table-obiettivo-organizzativo.component';
 
 @NgModule({
   declarations:[
@@ -21,7 +23,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AttivitaComponent,
     KpiComponent,
     TableObiettivoIstituzionaleComponent,
-    TableObiettivoOrganizzativoComponent
+    TableObiettivoOrganizzativoComponent,
+    TableObiettivoIstituzionaleUOComponent,
+    TableObiettivoOrganizzativoUOComponent
   ],
   imports:[
     CommonModule,
@@ -38,7 +42,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AttivitaComponent,
     KpiComponent,
     TableObiettivoIstituzionaleComponent,
-    TableObiettivoOrganizzativoComponent
+    TableObiettivoOrganizzativoComponent,
+    TableObiettivoIstituzionaleUOComponent,
+    TableObiettivoOrganizzativoUOComponent
   ]
 })
 export class MySprintComponentsModule {}
