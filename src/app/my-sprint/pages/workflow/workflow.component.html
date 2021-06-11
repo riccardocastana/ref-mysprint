@@ -129,3 +129,31 @@
     </mat-card>
   </div>
 </section>
+
+<section class="mys-my-3 ">
+  <mat-list role="list">
+    <mat-list-item *ngFor="let type of typeOfOb" class="mys-cursor-pointer mys-border-radius-5" role="listitem"
+      (click)="selectTypeOb(type)">
+      <span [matBadge]="type.qt" matBadgeOverlap="false" matBadgeSize="small">
+        {{type.name}}
+      </span>
+    </mat-list-item>
+  </mat-list>
+</section>
+<ng-container *ngFor="let selectedType of typeOfOb">
+  <section class="mys-border-width-1 mys-border-radius-5 mys-p-3" *ngIf="selectedType.selected">
+    <div class="mys-d-flex">
+      <button class="mys-mx-3" mat-raised-button color="primary" (click)="changeAllSelection()">{{isAllObSelected ?
+        'Deseleziona' : 'Seleziona'}} tutti</button>
+      <button class="mys-mr-3" mat-button color="primary"
+        *ngFor="let action of selectedType.actions">{{action}}</button>
+    </div>
+    <mat-selection-list #obiettivi>
+      <mat-list-option *ngFor="let ob of selectedType.obiettivi">
+        <div class="mys-d-flex" >
+          {{ob.code}}
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </section>
+</ng-container>

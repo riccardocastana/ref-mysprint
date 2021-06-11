@@ -1,18 +1,19 @@
 <h1 class="mys-font-size-30 mys-text-color-primary">Homepage</h1>
 <section class="mys-my-5">
   <h4>Ciao <i>User </i>, Nel tuo ente sono attivi i seguenti processi: </h4>
-  <mat-accordion multi="true">
-    <mat-expansion-panel >
+  <mat-accordion multi=false>
+    <div class="mys-mb-3">
+      <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="mys-font-w5 mys-text-color-primary">Performance strategica</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mys-performance-strategica></mys-performance-strategica>
+      </mat-expansion-panel>
+    </div>
 
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <span class="mys-font-w5 mys-text-color-primary">Performance strategica</span>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mys-performance-strategica></mys-performance-strategica>
-    </mat-expansion-panel>
-
-    <mat-expansion-panel >
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           <span class="mys-font-w5 mys-text-color-primary">Performance Operativa</span>
@@ -20,14 +21,14 @@
       </mat-expansion-panel-header>
       <mys-performance-operativa></mys-performance-operativa>
     </mat-expansion-panel>
-
   </mat-accordion>
+
 </section>
 
 <section class="mys-mt-5">
   <h4>Hai in carico i seguenti Obbiettivi: </h4>
   <mat-accordion color="primary">
-    <mat-expansion-panel >
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           <span class="mys-font-w5 mys-text-color-primary">Obbiettivi</span>
@@ -40,17 +41,19 @@
 
 <section class="mys-mt-5">
   <h4>Hai in gestione le seguenti Attività: </h4>
-  <mat-accordion color="primary" multi=true>
-    <mat-expansion-panel >
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <span class="mys-font-w5 mys-text-color-primary">Attività</span>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <mys-attivita></mys-attivita>
-    </mat-expansion-panel>
+  <mat-accordion multi=false>
+      <div class="mys-mb-3">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class="mys-font-w5 mys-text-color-primary">Attività</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mys-attivita></mys-attivita>
+      </mat-expansion-panel>
+  </div>
 
-    <mat-expansion-panel >
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           <span class="mys-font-w5 mys-text-color-primary">KPI</span>

@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { MatOption } from '@angular/material/core';
+import { MatList, MatSelectionList } from '@angular/material/list';
 import { MatSelect } from '@angular/material/select';
+import { typeOfOb } from './workflow-const';
 @Component({
   selector: 'app-workflow',
   templateUrl: './workflow.component.html',
@@ -11,9 +13,11 @@ export class WorkflowComponent implements OnInit {
   @ViewChild('personeSel') personeSelect!: MatSelect;
   @ViewChild('pianoSel') pianoSelect!: MatSelect;
   @ViewChild('UOFiglieSel') uoFiglieSel!: MatSelect;
+  @ViewChild('obiettivi') obiettiviList!: MatSelectionList;
 
   allPersoneSelected = false;
   allPianoSelected = false;
+  isAllObSelected = false;
 
   isUOSelActive = false;
   allUOFiglieSelected = false;
@@ -55,6 +59,7 @@ export class WorkflowComponent implements OnInit {
     'Seconda UO figlia',
     'Terza UO figlia'
   ];
+  typeOfOb = typeOfOb;
   constructor() { }
 
   ngOnInit(): void {
@@ -103,6 +108,23 @@ export class WorkflowComponent implements OnInit {
       this.uoFiglieSel.options.forEach((item: MatOption) => item.select());
     } else {
       this.uoFiglieSel.options.forEach((item: MatOption) => { item.deselect() });
+    }
+  }
+  selectTypeOb(typeOb: any): boolean | void {
+    if (typeOb.selected) {
+      return typeOb.selected = !typeOb.selected;
+    }
+    this.typeOfOb.forEach((type:any) => type.selected = false);
+    typeOb.selected = !typeOb.selected;
+  }
+
+  changeAllSelection() {
+    this.isAllObSelected = !this.isAllObSelected;
+    const isAllSelected = this.obiettiviList.selectedOptions.selected.length === this.obiettiviList.options.length
+    if (isAllSelected) {
+      this.obiettiviList.deselectAll();
+    } else {
+      this.obiettiviList.selectAll();
     }
   }
 

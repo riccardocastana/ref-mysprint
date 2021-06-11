@@ -13,6 +13,7 @@ export class TableObiettivoOrganizzativoUOComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   setPercentageBackground(percentage: number): string {
     return `linear-gradient(90deg,#dad24f 0%, #dad24f ${percentage}%, #fff9e8 0%, #fff9e8 100%)`
   }

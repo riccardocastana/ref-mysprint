@@ -18,6 +18,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatListModule } from '@angular/material/list';
+import { MatBadgeModule } from '@angular/material/badge';
 @NgModule({
   declarations:[
     HomepageComponent,
@@ -40,7 +42,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatAutocompleteModule,
     MatCardModule,
     MatDatepickerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatListModule,
+    MatBadgeModule
   ]
 })
 export class MySprintPagesModule {}
